@@ -13,6 +13,7 @@ object Nace {
     val viewModelProviderFactory get() = _viewModelProviderFactory
 
     internal fun init(app: Application) {
+        NLog.d("Nace init")
         _application = app
     }
 
