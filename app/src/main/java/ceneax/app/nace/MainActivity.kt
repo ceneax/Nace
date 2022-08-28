@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import ceneax.app.lib.nace.INaceView
 import ceneax.app.lib.nace.naceEffect
+import ceneax.app.lib.nace.obx
 import ceneax.app.nace.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), INaceView {
@@ -21,9 +22,19 @@ class MainActivity : AppCompatActivity(), INaceView {
 
         setSupportActionBar(binding.toolbar)
 
-        effect.test()
+//        effect.test()
+
+        binding.btInvalidate.setOnClickListener {
+            effect.test++
+        }
+
+        obx(effect, effect::test) {
+            logger("obx()")
+        }
     }
 
     override fun invalidate() {
+//        logger("invalidate() effect.test = ${effect.test}")
+        logger("invalidate()")
     }
 }
