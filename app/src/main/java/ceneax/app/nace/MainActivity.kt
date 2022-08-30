@@ -1,40 +1,24 @@
 package ceneax.app.nace
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import ceneax.app.lib.nace.INaceView
-import ceneax.app.lib.nace.naceEffect
-import ceneax.app.lib.nace.obx
+import ceneax.app.lib.nace.core.INaceView
+import ceneax.app.lib.nace.core.naceEffect
+import ceneax.app.lib.nace.core.obx
 import ceneax.app.nace.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), INaceView {
-    private val effect by naceEffect<MainEffect>()
+class MainActivity : BaseActivity<ActivityMainBinding>(), INaceView<MainEffect> {
+    override val effect by naceEffect()
 
-    private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-//        effect.test()
-
+    override fun bindEvent() {
         binding.btInvalidate.setOnClickListener {
-            effect.test++
+            effect.test ++
         }
+    }
 
-        obx(effect, effect::test) {
-            logger("obx()")
+    override fun initObserver() {
+        obx(effect::test) {
         }
     }
 
     override fun invalidate() {
-//        logger("invalidate() effect.test = ${effect.test}")
-        logger("invalidate()")
     }
 }

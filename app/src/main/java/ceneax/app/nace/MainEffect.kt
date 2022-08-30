@@ -1,8 +1,8 @@
 package ceneax.app.nace
 
-import ceneax.app.lib.nace.INaceState
-import ceneax.app.lib.nace.NaceEffect
-import ceneax.app.lib.nace.obs
+import ceneax.app.lib.nace.core.INaceState
+import ceneax.app.lib.nace.core.NaceEffect
+import ceneax.app.lib.nace.core.obs
 
 data class MainState(
     val title: String = ""
@@ -13,7 +13,7 @@ class MainEffect : NaceEffect() {
 
     override fun onInit() {
         super.onInit()
-//        test++
+        test ++
     }
 
     fun test2() {

@@ -1,4 +1,4 @@
-package ceneax.app.lib.nace
+package ceneax.app.lib.nace.core
 
 interface INaceLifecycle {
     fun onInit()

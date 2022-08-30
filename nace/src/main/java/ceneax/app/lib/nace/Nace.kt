@@ -2,6 +2,7 @@ package ceneax.app.lib.nace
 
 import android.app.Application
 import androidx.lifecycle.ViewModelProvider
+import ceneax.app.lib.nace.NLog
 
 internal typealias NaceViewModelProviderFactory = () -> ViewModelProvider.Factory
 

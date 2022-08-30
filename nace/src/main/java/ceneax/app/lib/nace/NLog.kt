@@ -2,7 +2,7 @@ package ceneax.app.lib.nace
 
 import android.util.Log
 
-internal object NLog {
+object NLog {
     private const val TAG = "Log_Nace"
     private const val PREFIX = "[ Nace ]"
     private const val ARROW = " => "
