@@ -12,7 +12,7 @@ data class Item2(
     val two: String = ""
 )
 
-class AdaEffect(context: NaceContext) : NaceEffect(context) {
+class AdaEffect : NaceEffect() {
     override fun onInit() {
         super.onInit()
         updateList(listOf(

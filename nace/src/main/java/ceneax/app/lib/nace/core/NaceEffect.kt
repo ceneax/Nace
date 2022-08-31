@@ -17,7 +17,12 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-abstract class NaceEffect(val context: NaceContext) : ViewModel() {
+abstract class NaceEffect @JvmOverloads constructor(
+    val context: INaceContext = EmptyNaceContext
+) : ViewModel() {
+    val <T : Any> T.obs
+        get() = NaceObs<NaceEffect, T>(this)
+
     @NaceInternalApi
     val invalidater = NaceInvalidater(true)
     @NaceInternalApi

@@ -35,10 +35,7 @@ class NaceObs<E : NaceEffect, T>(initialValue: T) {
     }
 }
 
-fun <E : NaceEffect, T> E.obs(value: T) = NaceObs<E, T>(value)
-
-//val <T, E : NaceEffect> T.obs
-//   get() = NaceObs<E, T>(this)
+//fun <E : NaceEffect, T> E.obs(value: T) = NaceObs<E, T>(value)
 
 inline fun <reified E : NaceEffect, T> INaceView<E>.obx(
     prop: KProperty0<T>,
