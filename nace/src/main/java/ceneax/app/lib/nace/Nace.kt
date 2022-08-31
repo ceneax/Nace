@@ -1,16 +1,15 @@
 package ceneax.app.lib.nace
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
-import ceneax.app.lib.nace.NLog
+import ceneax.app.lib.nace.core.INaceViewModelProviderFactory
 
-internal typealias NaceViewModelProviderFactory = () -> ViewModelProvider.Factory
+internal typealias ViewModelProviderFactory = () -> INaceViewModelProviderFactory
 
 object Nace {
     private lateinit var _application: Application
     internal val application get() = _application
 
-    private var _viewModelProviderFactory: NaceViewModelProviderFactory? = null
+    private var _viewModelProviderFactory: ViewModelProviderFactory? = null
     val viewModelProviderFactory get() = _viewModelProviderFactory
 
     internal fun init(app: Application) {
@@ -18,7 +17,7 @@ object Nace {
         _application = app
     }
 
-    fun config(factory: NaceViewModelProviderFactory? = null) {
+    fun config(factory: ViewModelProviderFactory? = null) {
         factory?.let {
             _viewModelProviderFactory = it
         }

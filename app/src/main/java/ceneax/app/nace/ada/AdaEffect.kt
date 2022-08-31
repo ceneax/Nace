@@ -1,6 +1,8 @@
 package ceneax.app.nace.ada
 
+import ceneax.app.lib.nace.core.NaceContext
 import ceneax.app.lib.nace.core.NaceEffect
+import ceneax.app.lib.nace.core.launch
 
 data class Item(
     val one: String = ""
@@ -10,7 +12,7 @@ data class Item2(
     val two: String = ""
 )
 
-class AdaEffect : NaceEffect() {
+class AdaEffect(context: NaceContext) : NaceEffect(context) {
     override fun onInit() {
         super.onInit()
         updateList(listOf(
@@ -23,5 +25,8 @@ class AdaEffect : NaceEffect() {
             Item("one3"),
             Item2("two3"),
         ))
+    }
+
+    private fun scope() = launch {
     }
 }
